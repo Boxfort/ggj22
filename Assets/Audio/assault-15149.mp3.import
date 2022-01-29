@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/assault-15149.mp3-05232144bff7f977c57582b6bafea581.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/assault-15149.mp3"
+dest_files=[ "res://.import/assault-15149.mp3-05232144bff7f977c57582b6bafea581.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

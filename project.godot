@@ -8,9 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "CustomWindow",
+"language": "GDScript",
+"path": "res://Assets/Scenes/CustomWindow.gd"
+} ]
+_global_script_class_icons={
+"CustomWindow": ""
+}
+
 [application]
 
 config/name="GGJ22"
+run/main_scene="res://Assets/Scenes/Office.tscn"
 config/icon="res://icon.png"
 
 [display]

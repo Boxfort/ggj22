@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/talkingsynth.mp3-63c0dc339e528dd2ac8e55e1fc193ed9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/talkingsynth.mp3"
+dest_files=[ "res://.import/talkingsynth.mp3-63c0dc339e528dd2ac8e55e1fc193ed9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

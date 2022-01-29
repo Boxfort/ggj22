@@ -1,0 +1,210 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://CursorScript.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/ExitButton.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/CursorHand.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/CursorArrow.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/WindowNinePatch.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Sprites/DesktopBackground.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Fonts/Kenney Mini.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/Scenes/LineEditWhite.tscn" type="PackedScene" id=9]
+[ext_resource path="res://LoginWindow.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Sprites/ButtonNinePatch.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Scenes/LoginScreen.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 12 )
+
+[node name="DesktopBackground" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Windows" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginWindow" type="NinePatchRect" parent="Windows"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.5
+margin_top = -75.0
+margin_right = 145.5
+margin_bottom = 75.0
+rect_min_size = Vector2( 200, 150 )
+texture = ExtResource( 5 )
+patch_margin_left = 8
+patch_margin_top = 31
+patch_margin_right = 8
+patch_margin_bottom = 10
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Windows/LoginWindow"]
+margin_left = 9.0
+margin_top = 1.0
+margin_right = 207.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 1 )
+text = "Welcome to Macrohard Doors"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragHandle" type="Control" parent="Windows/LoginWindow"]
+anchor_right = 1.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="Windows/LoginWindow" groups=["buttons"]]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 20.0
+disabled = true
+texture_normal = ExtResource( 2 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="Control" parent="Windows/LoginWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 29.0
+margin_right = -10.0
+margin_bottom = -14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="ColorRect" parent="Windows/LoginWindow/Content"]
+margin_left = 75.0
+margin_top = 16.0
+margin_right = 266.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" parent="Windows/LoginWindow/Content/Username" instance=ExtResource( 9 )]
+placeholder_text = "enter username"
+
+[node name="Password" type="ColorRect" parent="Windows/LoginWindow/Content"]
+margin_left = 75.0
+margin_top = 48.0
+margin_right = 266.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" parent="Windows/LoginWindow/Content/Password" instance=ExtResource( 9 )]
+secret = true
+placeholder_text = "enter password"
+
+[node name="UsernameLabel" type="Label" parent="Windows/LoginWindow/Content"]
+margin_left = 11.0
+margin_top = 21.0
+margin_right = 93.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Username"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PasswordLabel" type="Label" parent="Windows/LoginWindow/Content"]
+margin_left = 11.0
+margin_top = 54.0
+margin_right = 93.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Password"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginButton" type="TextureButton" parent="Windows/LoginWindow/Content" groups=["buttons"]]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -73.0
+margin_top = -25.0
+margin_right = -6.0
+margin_bottom = -3.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTexture" type="NinePatchRect" parent="Windows/LoginWindow/Content/LoginButton"]
+margin_right = 67.0
+margin_bottom = 22.0
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 16, 16 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/LoginWindow/Content/LoginButton/ButtonTexture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 3 )
+text = "Login"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="Node2D" parent="."]
+z_index = 10
+script = ExtResource( 1 )
+
+[node name="CursorHand" type="Sprite" parent="Cursor"]
+visible = false
+position = Vector2( 2, 11.5 )
+texture = ExtResource( 3 )
+
+[node name="CursorArrow" type="Sprite" parent="Cursor"]
+position = Vector2( 6, 10.5 )
+texture = ExtResource( 4 )
+
+[connection signal="gui_input" from="Windows/LoginWindow/DragHandle" to="Windows/LoginWindow" method="_on_DragHandle_gui_input"]
+[connection signal="pressed" from="Windows/LoginWindow/ExitButton" to="Windows/LoginWindow" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="Windows/LoginWindow/Content/LoginButton" to="." method="_on_LoginButton_pressed"]
