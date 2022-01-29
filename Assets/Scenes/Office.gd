@@ -2,6 +2,10 @@ extends CanvasLayer
 
 signal nuke_pressed
 
+onready var windows = $Windows
+onready var gameover_color = $GameOverColor
+onready var gameover_sound = $GameOverSound
+onready var gameover_window = $GameOverWindow
 onready var startup_audio: AudioStreamPlayer = $StartupNoise
 onready var elevator_music = $ElevatorMusic
 onready var hacking_music = $HackingMusic
@@ -49,7 +53,7 @@ func _on_startup_noise_finished():
     resume_all()
     elevator_music.play()
     click_block.hide()
-    timer.wait_time = 44.5
+    timer.wait_time = 5#44.5
     timer.start()
 
     # First checkup
@@ -64,7 +68,7 @@ func _on_startup_noise_finished():
     resume_all()
 
     # IRC1
-    timer.wait_time = 30
+    timer.wait_time = 5#30
     timer.start()
     yield(timer, "timeout")
     elevator_music.stop()
@@ -79,9 +83,7 @@ func _on_startup_noise_finished():
     if hacking_music.playing:
         elevator_music.stream_paused = true
 
-    # IRC2
-    timer.wait_time = 150
-    timer.start()
+    # IRC2 (timer started when opening hack menu)
     yield(timer, "timeout")
     pause_music()
     pause_all()
@@ -101,7 +103,9 @@ func _on_startup_noise_finished():
 
     # Once we're on the nuke stage no more managers
     boss_timer.stop()
+    hack_window.hide()
 
+    # Wait for the player to nuke
     yield(self, "nuke_pressed")
     
     timer.wait_time = 3
@@ -136,6 +140,8 @@ var first_open = true
 
 func _on_HackerIconButton_pressed():
     if first_open:
+        timer.wait_time = 150
+        timer.start()
         meters.enable_war()
         first_open = false
 
@@ -199,3 +205,18 @@ func _on_BossTimer_timeout():
 
 func _on_NukeButton_pressed():
     emit_signal("nuke_pressed")
+
+
+func _on_Meters_war_started():
+    click_block.show()
+    windows.hide()
+    pause_all()
+    pause_music()
+    gameover_window.show()
+    var delay = get_tree().create_timer(2)
+    yield(delay, "timeout")
+    gameover_color.show()
+    gameover_sound.play()
+    delay = get_tree().create_timer(5)
+    yield(delay, "timeout")
+    get_tree().change_scene("res://Assets/Scenes/LoginScreen.tscn")

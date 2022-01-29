@@ -7,6 +7,7 @@ onready var war_meter: ProgressBar = $War/ProgressBar
 onready var timer = $Tick
 
 var paused = false
+var war_enabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,10 +18,12 @@ func _ready():
 func enable_war():
     war_meter.value = 0
     war_meter.get_parent().show()
+    war_enabled = true
 
 func disable_war():
     war_meter.value = 0
     war_meter.get_parent().hide()
+    war_enabled = false
 
 func _on_timer_timeout():
     if paused:
@@ -28,7 +31,7 @@ func _on_timer_timeout():
 
     productivity_meter.value = max(productivity_meter.value - 1, 0)
 
-    if war_meter.visible:
+    if war_enabled:
         war_meter.value = war_meter.value + 1
         if war_meter.value == 100:
             emit_signal("war_started")

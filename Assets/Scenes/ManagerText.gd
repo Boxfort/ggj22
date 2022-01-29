@@ -4,11 +4,11 @@ signal closed
 signal fired
 
 var intro_text = "I want to see lots of good work today! I'll be back to check on you every so often to make sure you're being !PRODUCTIVE! and you're not doing anything you shouldn't be. No more antics, especially after last time.\n\nHave a productive day!"
-var first_checkup_good = "I'm back! \nWow very impressive, keep this up and you might just get those unpaid holiday days I took from you! \nKeep it up!"
+var first_checkup_good = "I'm back! \nWow very impressive, keep this up and you might just get those unpaid holiday days I took from you! \n\nKeep it up!"
 var first_checkup_okay = "I'm back! \nHmmmm, your productivity could use some work. I want to see some improvement the next time I come back."
-var first_checkup_bad = "I'm back! \nWhat have you been doing??? You better not be slacking off when I'm not around. I want to see some SERIOUS improvement.\n OR ELSE!"
+var first_checkup_bad = "I'm back! \nWhat have you been doing??? You better not be slacking off when I'm not around. I want to see some SERIOUS improvement.\n\nOR ELSE!"
 
-var final_text = "Me again! Good job today, huh?\nLook the department has to make some cuts, and i'm afraid you're our biggest expense so this is your last day... \nWell, I'm off to play golf, see ya!"
+var final_text = "Me again! Good job today, huh?\nLook, the department has to make some cuts, and I'm afraid you're our biggest expense so this is your last day... \n\nWell, I'm off to play golf, see ya!"
 
 var check_good = ["Wow fantastic job! Keep working hard."]
 var check_okay = ["Hello! \n\n You're doing... fine. Try and pick up the pace a little bit huh? I'll be back later."]

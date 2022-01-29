@@ -19,9 +19,9 @@ var first_chat_a_response = "dude im at work"
 var first_chat_b = ["if you don't help the world will end!"]
 var first_chat_b_response = "if i get fired again it might as well end"
 var first_chat_c = ["don't be a dick", "look, i've sent you a program", "you can use it to track your boss and not get caught", "try it out now"]
-var first_chat_d = ["pretty cool huh? just dont less your boss see", "so will you help?!"]
+var first_chat_d = ["pretty cool huh? just dont let your boss see", "so will you help?!"]
 var first_chat_d_response = "okay fine..."
-var first_chat_e = ["okay great", "I've sent you the program to intercept the hackers", "good luck"]
+var first_chat_e = ["okay great", "ive sent you the program to intercept the hackers", "good luck"]
 
 
 var second_chat_a = ["its working!", "ive almost got thier IPs traced through my visual basic gui", "just one more minute!"]
