@@ -62,10 +62,10 @@ func _process(delta):
             emit_signal("check_player")
             current_state = State.CHECKING
         else:
-            go_to_desired_location(delta)
+            go_to_desired_location(delta, boss_speed / 2)
 
-func go_to_desired_location(delta):
-    boss_dot.rect_position = boss_dot.rect_position.move_toward(desired_location, boss_speed * delta)
+func go_to_desired_location(delta, speed = boss_speed):
+    boss_dot.rect_position = boss_dot.rect_position.move_toward(desired_location, speed * delta)
     distance_label.text = "%03dm" % int(boss_dot.rect_position.distance_to(center) / 2)
 
 func start_loiter():

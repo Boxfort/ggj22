@@ -1,17 +1,11 @@
-extends Control
-class_name CustomWindow
-
-
-onready var exit_button = $ExitButton
-onready var drag_handle = $DragHandle
+extends TextureRect
 
 var drag_point = null
 
 func _ready():
-    exit_button.connect("pressed", self, "_on_ExitButton_pressed")
-    drag_handle.connect("gui_input", self, "on_DragHandle_gui_input")
+    self.connect("gui_input", self, "_on_gui_input")
 
-func _on_DragHandle_gui_input(event: InputEvent):
+func _on_gui_input(event: InputEvent):
     if event is InputEventMouseButton:
         if event.button_index == BUTTON_LEFT:
             if event.pressed:
@@ -25,10 +19,6 @@ func _on_DragHandle_gui_input(event: InputEvent):
         set_position(get_global_mouse_position() - drag_point)
 
 
-func _on_ExitButton_pressed():
-    exit_button.emit_signal("mouse_exited")
-    hide()
-
-
-func _on_SheetsButton_pressed():
-    show()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#    pass

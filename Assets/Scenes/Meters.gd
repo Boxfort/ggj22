@@ -14,20 +14,24 @@ func _ready():
     productivity_meter.value = 50
     war_meter.value = 0
 
+func enable_war():
+    war_meter.value = 0
+    war_meter.get_parent().show()
+
 func _on_timer_timeout():
     if paused:
         return
 
     productivity_meter.value = max(productivity_meter.value - 1, 0)
-    war_meter.value = war_meter.value + 1
 
-    if war_meter.value == 100:
-        emit_signal("war_started")
+    if war_meter.visible:
+        war_meter.value = war_meter.value + 1
+        if war_meter.value == 100:
+            emit_signal("war_started")
 
 
 func _on_SheetsButton_pressed():
     productivity_meter.value = productivity_meter.value + 3
-
 
 func _on_EmailWindow_email_replied():
     productivity_meter.value = productivity_meter.value + 10
@@ -43,3 +47,6 @@ func pause_meters():
 
 func resume_meters():
     paused = false
+
+func _on_HackingWindow_hack_complete():
+    war_meter.value = war_meter.value - 10

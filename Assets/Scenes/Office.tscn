@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://CursorScript.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/ExitButton.png" type="Texture" id=2]
@@ -39,6 +39,14 @@
 [ext_resource path="res://Assets/Scenes/HackerIcon.gd" type="Script" id=37]
 [ext_resource path="res://Assets/Scenes/BossLocatorIcon.gd" type="Script" id=38]
 [ext_resource path="res://Assets/Scenes/HackingWindow.gd" type="Script" id=39]
+[ext_resource path="res://Assets/Sprites/KeyHole.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Sprites/EncryptionKey.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Scenes/Draggable.gd" type="Script" id=42]
+[ext_resource path="res://Assets/Scenes/HackEncryptionKey.gd" type="Script" id=43]
+[ext_resource path="res://Assets/Fonts/Kenney Rocket.ttf" type="DynamicFontData" id=44]
+[ext_resource path="res://Assets/Scenes/Hangman.gd" type="Script" id=45]
+[ext_resource path="res://Assets/Scenes/HangmanLetter.gd" type="Script" id=46]
+[ext_resource path="res://Assets/Audio/completetask_0.mp3" type="AudioStream" id=47]
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 10 )
@@ -65,6 +73,22 @@ font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=19]
 font_data = ExtResource( 10 )
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 7.16667, 12.7083 )
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 10.625, 8.75 )
+
+[sub_resource type="DynamicFont" id=27]
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 24
+font_data = ExtResource( 44 )
+
+[sub_resource type="DynamicFont" id=31]
+font_data = ExtResource( 44 )
 
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0, 0, 0, 1 )
@@ -457,6 +481,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="Windows/BossLocatorWindow/Content"]
 
 [node name="SheetsWindow" type="NinePatchRect" parent="Windows"]
+visible = false
 anchor_left = 57.8
 anchor_top = 4.66667
 anchor_right = 142.6
@@ -723,10 +748,10 @@ stream = ExtResource( 31 )
 stream = ExtResource( 33 )
 
 [node name="HackingWindow" type="NinePatchRect" parent="Windows"]
-anchor_left = 41.8
-anchor_top = 13.5556
-anchor_right = 126.6
-anchor_bottom = 48.4444
+anchor_left = 33.8
+anchor_top = 10.8889
+anchor_right = 129.4
+anchor_bottom = 50.3333
 rect_min_size = Vector2( 200, 150 )
 texture = ExtResource( 7 )
 patch_margin_left = 8
@@ -780,9 +805,188 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="Windows/HackingWindow/Content"]
 margin_left = 10.0
 margin_top = 1.0
-margin_right = 413.0
-margin_bottom = 271.0
+margin_right = 468.0
+margin_bottom = 313.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HackComplete" type="AudioStreamPlayer" parent="Windows/HackingWindow/Content"]
+stream = ExtResource( 47 )
+pitch_scale = 0.75
+
+[node name="Hacks" type="Control" parent="Windows/HackingWindow/Content"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 468.0
+margin_bottom = 312.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EncryptionKey" type="Control" parent="Windows/HackingWindow/Content/Hacks"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 43 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hole" type="TextureRect" parent="Windows/HackingWindow/Content/Hacks/EncryptionKey"]
+margin_left = 64.0
+margin_top = 111.0
+margin_right = 85.0
+margin_bottom = 143.0
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="Windows/HackingWindow/Content/Hacks/EncryptionKey/Hole"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windows/HackingWindow/Content/Hacks/EncryptionKey/Hole/Area2D"]
+position = Vector2( 10, 13.2917 )
+shape = SubResource( 29 )
+
+[node name="Key" type="TextureRect" parent="Windows/HackingWindow/Content/Hacks/EncryptionKey"]
+margin_left = 281.0
+margin_top = 93.0
+margin_right = 345.0
+margin_bottom = 157.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 41 )
+script = ExtResource( 42 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key" type="KinematicBody2D" parent="Windows/HackingWindow/Content/Hacks/EncryptionKey/Key"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windows/HackingWindow/Content/Hacks/EncryptionKey/Key/Key"]
+position = Vector2( 19.25, 33.75 )
+shape = SubResource( 28 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Windows/HackingWindow/Content/Hacks/EncryptionKey"]
+margin_left = 119.0
+margin_top = 247.0
+margin_right = 339.0
+margin_bottom = 269.0
+custom_fonts/normal_font = SubResource( 27 )
+bbcode_enabled = true
+bbcode_text = "[shake rate=5 level=15] ENCRPT MILITARY SECRETS  [/shake]"
+text = " ENCRPT MILITARY SECRETS  "
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hangman" type="Control" parent="Windows/HackingWindow/Content/Hacks"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 45 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Windows/HackingWindow/Content/Hacks/Hangman"]
+margin_left = 99.0
+margin_top = 253.0
+margin_right = 368.0
+margin_bottom = 275.0
+custom_fonts/normal_font = SubResource( 27 )
+bbcode_enabled = true
+bbcode_text = "[shake rate=5 level=15] BREAK  HACKER  SSH  PASSWORDS [/shake]"
+text = " BREAK  HACKER  SSH  PASSWORDS "
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/Hangman"]
+margin_left = 64.0
+margin_top = 153.0
+margin_right = 390.0
+margin_bottom = 186.0
+custom_fonts/font = SubResource( 30 )
+text = "H _ O R S E"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Letter" type="TextureButton" parent="Windows/HackingWindow/Content/Hacks/Hangman" groups=["buttons"]]
+margin_left = 91.0
+margin_top = 55.0
+margin_right = 132.0
+margin_bottom = 93.0
+script = ExtResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/Hangman/Letter"]
+margin_left = 6.0
+margin_top = -2.0
+margin_right = 23.0
+margin_bottom = 18.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 31 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Letter2" type="TextureButton" parent="Windows/HackingWindow/Content/Hacks/Hangman" groups=["buttons"]]
+margin_left = 211.0
+margin_top = 55.0
+margin_right = 252.0
+margin_bottom = 93.0
+script = ExtResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/Hangman/Letter2"]
+margin_left = 6.0
+margin_top = -2.0
+margin_right = 23.0
+margin_bottom = 18.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 31 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Letter3" type="TextureButton" parent="Windows/HackingWindow/Content/Hacks/Hangman" groups=["buttons"]]
+margin_left = 331.0
+margin_top = 55.0
+margin_right = 372.0
+margin_bottom = 93.0
+script = ExtResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/Hangman/Letter3"]
+margin_left = 6.0
+margin_top = -2.0
+margin_right = 23.0
+margin_bottom = 18.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 31 )
+text = "A"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1101,11 +1305,16 @@ text = "Okay"
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="BossTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="pressed" from="Icons/SheetsIcons/SheetsButton" to="Windows/SheetsWindow" method="_on_SheetsButton_pressed"]
 [connection signal="pressed" from="Icons/MailIcons/Button" to="Windows/EmailWindow" method="_on_Button_pressed"]
 [connection signal="pressed" from="Icons/BossLocatorIcon/BossButton" to="Windows/BossLocatorWindow" method="_on_BossButton_pressed"]
 [connection signal="pressed" from="Icons/BossLocatorIcon/BossButton" to="Windows/IRCWindow" method="_on_BossButton_pressed"]
 [connection signal="pressed" from="Icons/HackerIcon/HackerIconButton" to="." method="_on_HackerIconButton_pressed"]
+[connection signal="pressed" from="Icons/HackerIcon/HackerIconButton" to="Windows/HackingWindow" method="_on_HackerIconButton_pressed"]
 [connection signal="gui_input" from="Windows/BossLocatorWindow/DragHandle" to="Windows/BossLocatorWindow" method="_on_DragHandle_gui_input"]
 [connection signal="pressed" from="Windows/BossLocatorWindow/ExitButton" to="Windows/BossLocatorWindow" method="_on_ExitButton_pressed"]
 [connection signal="gui_input" from="Windows/SheetsWindow/DragHandle" to="Windows/SheetsWindow" method="_on_DragHandle_gui_input"]
@@ -1120,10 +1329,17 @@ one_shot = true
 [connection signal="pressed" from="Windows/EmailWindow/ExitButton" to="Windows/EmailWindow" method="_on_ExitButton_pressed"]
 [connection signal="timeout" from="Windows/EmailWindow/Content/EmailTimer" to="Windows/EmailWindow" method="_on_EmailTimer_timeout"]
 [connection signal="timeout" from="Windows/EmailWindow/Content/EmailTick" to="Windows/EmailWindow" method="_on_EmailTick_timeout"]
+[connection signal="hack_complete" from="Windows/HackingWindow" to="Meters" method="_on_HackingWindow_hack_complete"]
 [connection signal="gui_input" from="Windows/HackingWindow/DragHandle" to="Windows/HackingWindow" method="_on_DragHandle_gui_input"]
+[connection signal="pressed" from="Windows/HackingWindow/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/ExitButton" to="Windows/HackingWindow" method="_on_ExitButton_pressed"]
+[connection signal="body_entered" from="Windows/HackingWindow/Content/Hacks/EncryptionKey/Hole/Area2D" to="Windows/HackingWindow/Content/Hacks/EncryptionKey" method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter" method="_on_Letter_pressed"]
+[connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter2" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter2" method="_on_Letter_pressed"]
+[connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter3" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter3" method="_on_Letter_pressed"]
 [connection signal="show_boss_tracker" from="Windows/IRCWindow" to="Icons/BossLocatorIcon" method="_on_IRCWindow_show_boss_tracker"]
 [connection signal="show_hacker_term" from="Windows/IRCWindow" to="Icons/HackerIcon" method="_on_IRCWindow_show_hacker_term"]
 [connection signal="gui_input" from="Windows/IRCWindow/DragHandle" to="Windows/IRCWindow" method="_on_DragHandle_gui_input"]
 [connection signal="pressed" from="Windows/IRCWindow/ExitButton" to="Windows/IRCWindow" method="_on_ExitButton_pressed"]
 [connection signal="timeout" from="ManagerText/Timer" to="ManagerText" method="_on_Timer_timeout"]
+[connection signal="timeout" from="BossTimer" to="." method="_on_BossTimer_timeout"]
