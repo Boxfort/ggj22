@@ -247,4 +247,4 @@ texture = ExtResource( 4 )
 [connection signal="gui_input" from="Windows/LoginWindow/DragHandle" to="Windows/LoginWindow" method="_on_DragHandle_gui_input"]
 [connection signal="pressed" from="Windows/LoginWindow/ExitButton" to="Windows/LoginWindow" method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="Windows/LoginWindow/Content/LoginButton" to="." method="_on_LoginButton_pressed"]
-[connection signal="pressed" from="Windows/LoginWindow/Content/CreditsButton" to="." method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="Windows/LoginWindow/Content/CreditsButton" to="." method="_on_CreditsButton_pressed"]

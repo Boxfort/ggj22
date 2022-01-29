@@ -8,6 +8,8 @@ var first_checkup_good = "I'm back! \nWow very impressive, keep this up and you 
 var first_checkup_okay = "I'm back! \nHmmmm, your productivity could use some work. I want to see some improvement the next time I come back."
 var first_checkup_bad = "I'm back! \nWhat have you been doing??? You better not be slacking off when I'm not around. I want to see some SERIOUS improvement.\n OR ELSE!"
 
+var final_text = "Me again! Good job today, huh?\nLook the department has to make some cuts, and i'm afraid you're our biggest expense so this is your last day... \nWell, I'm off to play golf, see ya!"
+
 var check_good = ["Wow fantastic job! Keep working hard."]
 var check_okay = ["Hello! \n\n You're doing... fine. Try and pick up the pace a little bit huh? I'll be back later."]
 var check_bad = ["Well well well... slacking on the job once again. I'm not going to put up with this much more. \n\nYou've got one more chance."]
@@ -71,6 +73,15 @@ func check(productivity, naughty_windows_open):
             else:
                 text.text = fired_bad
                 fired = true
+    text.visible_characters = 0
+    show()
+    var delay = get_tree().create_timer(1)
+    yield(delay, "timeout")
+    timer.start()
+    audio.play()
+
+func play_last_checkup():
+    text.text = final_text
     text.visible_characters = 0
     show()
     var delay = get_tree().create_timer(1)

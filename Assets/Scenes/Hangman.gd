@@ -8,7 +8,7 @@ onready var letter_3 = $Letter3
 onready var guess_letters = [letter_1, letter_2, letter_3]
 onready var word = $Label
 
-var words = ["open", "horse", "battery", "staple", "password", "shoes", "crab"]
+var words = ["open", "horse", "battery", "staple", "password", "shoes", "crab", "query", "Gigabyte", "mystery", "buffer"]
 var letters = "abcdefghijklmnopqrstuvwxyz"
 var current_guess_letter = ""
 

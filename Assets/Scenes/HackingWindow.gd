@@ -7,6 +7,7 @@ onready var hack_complete_audio = $Content/HackComplete
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    ._ready()
     for child in hacks.get_children():
         child.connect("hack_done", self, "_on_hack_complete")
     show_random_hack()

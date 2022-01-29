@@ -18,7 +18,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    ._ready()
 
 func _on_EmailTimer_timeout():
     var email_entry = EmailEntry.instance()

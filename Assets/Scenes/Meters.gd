@@ -18,6 +18,10 @@ func enable_war():
     war_meter.value = 0
     war_meter.get_parent().show()
 
+func disable_war():
+    war_meter.value = 0
+    war_meter.get_parent().hide()
+
 func _on_timer_timeout():
     if paused:
         return

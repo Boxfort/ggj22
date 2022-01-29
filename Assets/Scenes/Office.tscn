@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://CursorScript.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/ExitButton.png" type="Texture" id=2]
@@ -47,6 +47,13 @@
 [ext_resource path="res://Assets/Scenes/Hangman.gd" type="Script" id=45]
 [ext_resource path="res://Assets/Scenes/HangmanLetter.gd" type="Script" id=46]
 [ext_resource path="res://Assets/Audio/completetask_0.mp3" type="AudioStream" id=47]
+[ext_resource path="res://Assets/Scenes/CreditsButton.gd" type="Script" id=48]
+[ext_resource path="res://Assets/Scenes/Mainframe.gd" type="Script" id=49]
+[ext_resource path="res://Assets/Sprites/NukeLogo.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Sprites/Bomb.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Scenes/CyberNukeWindow.gd" type="Script" id=52]
+[ext_resource path="res://Assets/Audio/atari_boom5.wav" type="AudioStream" id=53]
+[ext_resource path="res://Assets/Scenes/NukeIcon.gd" type="Script" id=54]
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 10 )
@@ -119,6 +126,9 @@ bg_color = Color( 0.898039, 0.313726, 0.313726, 1 )
 
 [sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=32]
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.780392, 0.780392, 0.780392, 0.866667 )
@@ -370,6 +380,42 @@ __meta__ = {
 }
 
 [node name="HackerIconButton" type="TextureButton" parent="Icons/HackerIcon" groups=["buttons"]]
+margin_right = 65.0
+margin_bottom = 76.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NukeIcon" type="Control" parent="Icons"]
+visible = false
+margin_left = 9.0
+margin_top = 405.0
+margin_right = 73.0
+margin_bottom = 480.0
+script = ExtResource( 54 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Icons/NukeIcon"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 50 )
+
+[node name="Label" type="Label" parent="Icons/NukeIcon"]
+margin_left = -4.0
+margin_top = 54.0
+margin_right = 86.0
+margin_bottom = 74.0
+theme = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+text = "(Y|3eRnUk3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NukeIconButton" type="TextureButton" parent="Icons/NukeIcon" groups=["buttons"]]
 margin_right = 65.0
 margin_bottom = 76.0
 __meta__ = {
@@ -748,6 +794,7 @@ stream = ExtResource( 31 )
 stream = ExtResource( 33 )
 
 [node name="HackingWindow" type="NinePatchRect" parent="Windows"]
+visible = false
 anchor_left = 33.8
 anchor_top = 10.8889
 anchor_right = 129.4
@@ -990,6 +1037,194 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Mainframe" type="Control" parent="Windows/HackingWindow/Content/Hacks"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 49 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Windows/HackingWindow/Content/Hacks/Mainframe"]
+margin_left = 129.0
+margin_top = 253.0
+margin_right = 345.0
+margin_bottom = 275.0
+custom_fonts/normal_font = SubResource( 27 )
+bbcode_enabled = true
+bbcode_text = "[shake rate=5 level=15] OVERLOAD THE MAINFRAME [/shake]"
+text = " OVERLOAD THE MAINFRAME "
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/Mainframe"]
+margin_left = 72.0
+margin_top = 65.0
+margin_right = 398.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 30 )
+text = "000%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OverloadButton" type="TextureButton" parent="Windows/HackingWindow/Content/Hacks/Mainframe" groups=["buttons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = 34.0
+margin_right = 49.0
+margin_bottom = 56.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTexture" type="NinePatchRect" parent="Windows/HackingWindow/Content/Hacks/Mainframe/OverloadButton"]
+margin_right = 94.0
+margin_bottom = 22.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 16, 16 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/Mainframe/OverloadButton/ButtonTexture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 3 )
+text = "OVERLOAD"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CyberNukeWindow" type="NinePatchRect" parent="Windows"]
+visible = false
+anchor_left = 62.6
+anchor_top = 18.8889
+anchor_right = 102.6
+anchor_bottom = 41.1111
+rect_min_size = Vector2( 200, 150 )
+texture = ExtResource( 7 )
+patch_margin_left = 8
+patch_margin_top = 31
+patch_margin_right = 8
+patch_margin_bottom = 10
+script = ExtResource( 52 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="Windows/CyberNukeWindow"]
+margin_left = 9.0
+margin_top = 1.0
+margin_right = 207.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 2 )
+text = "(Y|3eRnUk3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragHandle" type="Control" parent="Windows/CyberNukeWindow"]
+anchor_right = 1.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="Windows/CyberNukeWindow" groups=["buttons"]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 2 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="Control" parent="Windows/CyberNukeWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 31.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Windows/CyberNukeWindow/Content"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 191.0
+margin_bottom = 159.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NukeButton" type="TextureButton" parent="Windows/CyberNukeWindow/Content" groups=["buttons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = 42.0
+margin_right = 49.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTexture" type="NinePatchRect" parent="Windows/CyberNukeWindow/Content/NukeButton"]
+margin_right = 94.0
+margin_bottom = 22.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 16, 16 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/CyberNukeWindow/Content/NukeButton/ButtonTexture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 3 )
+text = "LAUNCH"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Windows/CyberNukeWindow/Content/NukeButton"]
+stream = ExtResource( 53 )
+pitch_scale = 0.5
+
+[node name="Bomb" type="Sprite" parent="Windows/CyberNukeWindow/Content"]
+position = Vector2( 106, 63 )
+texture = ExtResource( 51 )
 
 [node name="IRCWindow" type="NinePatchRect" parent="Windows"]
 visible = false
@@ -1237,6 +1472,128 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="YouWindow" type="NinePatchRect" parent="."]
+visible = false
+anchor_left = 57.8
+anchor_top = 4.66667
+anchor_right = 58.28
+anchor_bottom = 5.0
+margin_left = -46024.0
+margin_top = -2608.0
+margin_right = -46024.0
+margin_bottom = -2608.0
+rect_min_size = Vector2( 200, 150 )
+texture = ExtResource( 7 )
+patch_margin_left = 8
+patch_margin_top = 31
+patch_margin_right = 8
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="YouWindow"]
+margin_left = 9.0
+margin_top = 1.0
+margin_right = 207.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 2 )
+text = "Congratulations"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragHandle" type="Control" parent="YouWindow"]
+anchor_right = 1.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="YouWindow" groups=["buttons"]]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 20.0
+disabled = true
+texture_normal = ExtResource( 2 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="Control" parent="YouWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 31.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="YouWindow/Content"]
+margin_left = 12.0
+margin_top = 3.0
+margin_right = 371.0
+margin_bottom = 106.0
+custom_colors/font_color = Color( 0.243137, 0.243137, 0.243137, 1 )
+custom_fonts/font = SubResource( 32 )
+text = "A Winner Is You
+Thanks for playing!
+
+Made in 48 hours for GGJ 2022
+By Jack Anderson (Boxfort)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsButton" type="TextureButton" parent="YouWindow/Content" groups=["buttons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = 42.0
+margin_right = 49.0
+margin_bottom = 64.0
+script = ExtResource( 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTexture" type="NinePatchRect" parent="YouWindow/Content/CreditsButton"]
+margin_right = 94.0
+margin_bottom = 22.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 16, 16 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="YouWindow/Content/CreditsButton/ButtonTexture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 3 )
+text = "Credits"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="YouWindow/Content/CreditsButton"]
+stream = ExtResource( 31 )
+
 [node name="ManagerText" type="Panel" parent="."]
 visible = false
 margin_left = 41.0
@@ -1315,6 +1672,7 @@ one_shot = true
 [connection signal="pressed" from="Icons/BossLocatorIcon/BossButton" to="Windows/IRCWindow" method="_on_BossButton_pressed"]
 [connection signal="pressed" from="Icons/HackerIcon/HackerIconButton" to="." method="_on_HackerIconButton_pressed"]
 [connection signal="pressed" from="Icons/HackerIcon/HackerIconButton" to="Windows/HackingWindow" method="_on_HackerIconButton_pressed"]
+[connection signal="pressed" from="Icons/NukeIcon/NukeIconButton" to="Windows/CyberNukeWindow" method="_on_NukeIconButton_pressed"]
 [connection signal="gui_input" from="Windows/BossLocatorWindow/DragHandle" to="Windows/BossLocatorWindow" method="_on_DragHandle_gui_input"]
 [connection signal="pressed" from="Windows/BossLocatorWindow/ExitButton" to="Windows/BossLocatorWindow" method="_on_ExitButton_pressed"]
 [connection signal="gui_input" from="Windows/SheetsWindow/DragHandle" to="Windows/SheetsWindow" method="_on_DragHandle_gui_input"]
@@ -1337,9 +1695,18 @@ one_shot = true
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter" method="_on_Letter_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter2" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter2" method="_on_Letter_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter3" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter3" method="_on_Letter_pressed"]
+[connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Mainframe/OverloadButton" to="Windows/HackingWindow/Content/Hacks/Mainframe" method="_on_OverloadButton_pressed"]
+[connection signal="gui_input" from="Windows/CyberNukeWindow/DragHandle" to="Windows/CyberNukeWindow" method="_on_DragHandle_gui_input"]
+[connection signal="pressed" from="Windows/CyberNukeWindow/ExitButton" to="Windows/CyberNukeWindow" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="Windows/CyberNukeWindow/Content/NukeButton" to="." method="_on_NukeButton_pressed"]
+[connection signal="pressed" from="Windows/CyberNukeWindow/Content/NukeButton" to="Windows/CyberNukeWindow" method="_on_NukeButton_pressed"]
 [connection signal="show_boss_tracker" from="Windows/IRCWindow" to="Icons/BossLocatorIcon" method="_on_IRCWindow_show_boss_tracker"]
 [connection signal="show_hacker_term" from="Windows/IRCWindow" to="Icons/HackerIcon" method="_on_IRCWindow_show_hacker_term"]
+[connection signal="show_nuke" from="Windows/IRCWindow" to="Icons/NukeIcon" method="_on_IRCWindow_show_nuke"]
 [connection signal="gui_input" from="Windows/IRCWindow/DragHandle" to="Windows/IRCWindow" method="_on_DragHandle_gui_input"]
 [connection signal="pressed" from="Windows/IRCWindow/ExitButton" to="Windows/IRCWindow" method="_on_ExitButton_pressed"]
+[connection signal="gui_input" from="YouWindow/DragHandle" to="YouWindow" method="_on_DragHandle_gui_input"]
+[connection signal="pressed" from="YouWindow/ExitButton" to="YouWindow" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="YouWindow/Content/CreditsButton" to="YouWindow/Content/CreditsButton" method="_on_CreditsButton_pressed"]
 [connection signal="timeout" from="ManagerText/Timer" to="ManagerText" method="_on_Timer_timeout"]
 [connection signal="timeout" from="BossTimer" to="." method="_on_BossTimer_timeout"]

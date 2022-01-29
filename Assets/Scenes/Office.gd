@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal nuke_pressed
+
 onready var startup_audio: AudioStreamPlayer = $StartupNoise
 onready var elevator_music = $ElevatorMusic
 onready var hacking_music = $HackingMusic
@@ -12,6 +14,12 @@ onready var email_timer = $Windows/EmailWindow/Content/EmailTimer
 onready var irc_window = $Windows/IRCWindow
 onready var boss_window = $Windows/BossLocatorWindow
 onready var hack_window = $Windows/HackingWindow
+onready var you_window = $YouWindow
+onready var nuke_window = $Windows/CyberNukeWindow
+
+onready var boss_icon = $Icons/BossLocatorIcon
+onready var hacker_icon = $Icons/HackerIcon
+onready var nuke_icon = $Icons/NukeIcon
 
 var rng = RandomNumberGenerator.new()
 var min_boss_time = 35
@@ -27,10 +35,12 @@ func _ready():
 func pause_all():
     meters.pause_meters()
     email_timer.paused = true
+    boss_timer.paused = true
 
 func resume_all():
     meters.resume_meters()
     email_timer.paused = false
+    boss_timer.paused = false
 
 func _on_startup_noise_finished():
     # Play the intro
@@ -62,12 +72,65 @@ func _on_startup_noise_finished():
     irc_window.play_first_chat()
     yield(irc_window, "closed")
     resume_all()
-    boss_timer.start()
+    boss_timer.start() # boss starts showing up randomly
 
     # Fix up music
     elevator_music.play()
     if hacking_music.playing:
         elevator_music.stream_paused = true
+
+    # IRC2
+    timer.wait_time = 150
+    timer.start()
+    yield(timer, "timeout")
+    pause_music()
+    pause_all()
+    irc_window.play_second_chat()
+    yield(irc_window, "closed")
+    resume_all()
+    resume_music()
+
+    # IRC3
+    timer.wait_time = 60
+    timer.start()
+    yield(timer, "timeout")
+    pause_music()
+    pause_all()
+    irc_window.play_third_chat()
+    yield(irc_window, "closed")
+
+    # Once we're on the nuke stage no more managers
+    boss_timer.stop()
+
+    yield(self, "nuke_pressed")
+    
+    timer.wait_time = 3
+    timer.start()
+    yield(timer, "timeout")
+    irc_window.play_fourth_chat()
+    yield(irc_window, "closed")
+
+    meters.disable_war()
+    hack_window.hide()
+    boss_window.hide()
+    nuke_window.hide()
+    boss_icon.hide()
+    hacker_icon.hide()
+    nuke_icon.hide()
+    resume_all()
+
+    # Final Manager Chat
+    timer.wait_time = 15
+    timer.start()
+    yield(timer, "timeout")
+    click_block.show()
+    pause_music()
+    pause_all()
+    manager_text.play_last_checkup()
+    yield(manager_text, "closed")
+
+    you_window.show()
+
 
 var first_open = true
 
@@ -95,8 +158,10 @@ func pause_music():
     hacking_music.stream_paused = true
 
 func resume_music():
-    elevator_music.stream_paused = false
-    hacking_music.stream_paused = false
+    if are_naughty_windows_open():
+        hacking_music.stream_paused = false
+    else:
+        elevator_music.stream_paused = false
 
 
 func are_naughty_windows_open():
@@ -108,6 +173,7 @@ func do_boss_check():
     # Play the check
     pause_all()
     pause_music()
+    click_block.show()
     manager_text.check(meters.productivity_meter.value, are_naughty_windows_open())
     var fired = yield(manager_text, "closed")
     if fired:
@@ -129,3 +195,7 @@ func _on_BossTimer_timeout():
     boss_window.start_check()
     do_boss_check()
     boss_timer.wait_time = rng.randi_range(min_boss_time, max_boss_time)
+
+
+func _on_NukeButton_pressed():
+    emit_signal("nuke_pressed")

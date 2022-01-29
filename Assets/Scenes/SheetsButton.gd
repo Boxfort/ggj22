@@ -1,6 +1,6 @@
 extends TextureButton
 
-var words = ["SYNERGISE", "CALCULATE", "WORK", "FRAUD", "COOK", "COMPLETE", "ADD", "SUBTRACT", "CREATE", "ESTIMATE", "PRODUCE", "WORK", "WORK", "WORK", "WORK"]
+var words = ["SYNERGISE", "CALCULATE", "WORK", "FRAUD", "COOK", "COMPLETE", "ADD", "SUBTRACT", "CREATE", "ESTIMATE", "PRODUCE", "WORK", "WORK", "WORK", "WORK", "PLAN"]
 
 onready var button_label = $ButtonTexture/Label
 onready var button_audio = $AudioStreamPlayer
