@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://CursorScript.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/ExitButton.png" type="Texture" id=2]
@@ -58,9 +58,15 @@
 [ext_resource path="res://Assets/Scenes/File.gd" type="Script" id=56]
 [ext_resource path="res://Assets/Sprites/FileCorrupt.png" type="Texture" id=57]
 [ext_resource path="res://Assets/Scenes/Corrupted.gd" type="Script" id=58]
+[ext_resource path="res://Assets/Sprites/InsetNinePatch.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Scenes/TimePanel.gd" type="Script" id=60]
+[ext_resource path="res://Assets/Scenes/Ports.gd" type="Script" id=61]
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=34]
+font_data = ExtResource( 8 )
 
 [sub_resource type="Theme" id=4]
 
@@ -100,6 +106,11 @@ font_data = ExtResource( 44 )
 
 [sub_resource type="DynamicFont" id=31]
 font_data = ExtResource( 44 )
+
+[sub_resource type="DynamicFont" id=35]
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxEmpty" id=36]
 
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0, 0, 0, 1 )
@@ -173,6 +184,7 @@ __meta__ = {
 [node name="DesktopBackground2" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 135, 240 )
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,6 +233,34 @@ text = "Start
 align = 1
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimePanel" type="NinePatchRect" parent="StartBar"]
+margin_left = 717.0
+margin_top = 3.0
+margin_right = 758.0
+margin_bottom = 15.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 59 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+script = ExtResource( 60 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="StartBar/TimePanel"]
+margin_left = 2.0
+margin_right = 40.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 34 )
+text = "10:53"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1276,6 +1316,106 @@ bbcode_enabled = true
 bbcode_text = "[shake rate=5 level=15]REMOVE  CORRUPTED  FILES [/shake]"
 text = "REMOVE  CORRUPTED  FILES "
 scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ports" type="Control" parent="Windows/HackingWindow/Content/Hacks"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 201, 93 )
+script = ExtResource( 61 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Windows/HackingWindow/Content/Hacks/Ports"]
+margin_left = 121.0
+margin_top = 253.0
+margin_right = 349.0
+margin_bottom = 275.0
+custom_fonts/normal_font = SubResource( 27 )
+bbcode_enabled = true
+bbcode_text = "[shake rate=5 level=15]DISABLE  VULNERABLE  PORTS [/shake]"
+text = "DISABLE  VULNERABLE  PORTS "
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ports" type="Control" parent="Windows/HackingWindow/Content/Hacks/Ports"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CheckButton" type="CheckButton" parent="Windows/HackingWindow/Content/Hacks/Ports/Ports"]
+margin_left = 69.0
+margin_top = 31.0
+margin_right = 169.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+text = "80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton2" type="CheckButton" parent="Windows/HackingWindow/Content/Hacks/Ports/Ports"]
+margin_left = 286.0
+margin_top = 31.0
+margin_right = 386.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+text = "80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton3" type="CheckButton" parent="Windows/HackingWindow/Content/Hacks/Ports/Ports"]
+margin_left = 69.0
+margin_top = 104.0
+margin_right = 169.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+text = "80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton4" type="CheckButton" parent="Windows/HackingWindow/Content/Hacks/Ports/Ports"]
+margin_left = 286.0
+margin_top = 104.0
+margin_right = 386.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+text = "80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton5" type="CheckButton" parent="Windows/HackingWindow/Content/Hacks/Ports/Ports"]
+margin_left = 69.0
+margin_top = 176.0
+margin_right = 169.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+text = "80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton6" type="CheckButton" parent="Windows/HackingWindow/Content/Hacks/Ports/Ports"]
+margin_left = 286.0
+margin_top = 176.0
+margin_right = 386.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+text = "80"
 __meta__ = {
 "_edit_use_anchors_": false
 }

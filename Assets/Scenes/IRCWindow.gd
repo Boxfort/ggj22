@@ -118,7 +118,7 @@ func play_first_chat():
         yield(delay, "timeout")
 
     emit_signal("show_hacker_term")
-    delay = get_tree().create_timer(2)
+    delay = get_tree().create_timer(1)
     yield(delay, "timeout")
     emit_signal("closed")
     hide()

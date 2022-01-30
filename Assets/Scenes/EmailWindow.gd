@@ -11,7 +11,7 @@ onready var email_list = $Content/VBoxContainer
 onready var button_audio = $Content/AudioStreamPlayer
 onready var email_audio = $Content/EmailRecieved
 
-var max_email_time = 10
+var max_email_time = 8
 var min_email_time = 20
 
 var rng = RandomNumberGenerator.new()

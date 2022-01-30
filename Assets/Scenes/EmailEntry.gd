@@ -7,8 +7,8 @@ onready var sender_label = $Sender
 onready var reply_button = $ReplyButton
 onready var button_audio = $AudioStreamPlayer
 
-var subjects = ["Quarterly Report", "What's for lunch???", "Drinks tonight?", "Important Client Meeting", "STOP STEALING FROM THE FRIDGE!!!"]
-var senders = ["Jane Doe", "John Doe", "Gaben", "Greg", "Sam", "Jamie", "Duke", "Sophie", "Elizabeth", "HR", "Jimmy", "Lara"]
+var subjects = ["Meeting Invite", "Quarterly Report", "Scheduled Server Maintainence", "Server Room Issues", "The office plants need watering", "NO GAMING (LAST WARNING)", "Network Issues", "Meeting Notes", "All hands meeting today", "Mandatory Team Fun Session", "What's for lunch???", "Drinks tonight?", "Important Client Meeting", "STOP STEALING FROM THE FRIDGE!!!", "Has anyone seen my chair?", "YOU HAVE WON!!1 CLICK HERE NOW", "I QUIT screw you dave"]
+var senders = ["Jane", "John", "Gaben", "Greg", "Sam", "Jamie", "Duke", "Sophie", "Elizabeth", "HR", "Jimmy", "Lara", "Gordon", "Alyx", "Barney", "Alex", "Jim", "Daniel", "Sarah"]
 
 func _ready():
     subject_label.text = subjects[randi() % len(subjects)]

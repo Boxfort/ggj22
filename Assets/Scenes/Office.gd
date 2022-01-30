@@ -53,7 +53,7 @@ func _on_startup_noise_finished():
     resume_all()
     elevator_music.play()
     click_block.hide()
-    timer.wait_time = 5#44.5
+    timer.wait_time = 44.5
     timer.start()
 
     # First checkup
@@ -68,7 +68,7 @@ func _on_startup_noise_finished():
     resume_all()
 
     # IRC1
-    timer.wait_time = 5#30
+    timer.wait_time = 30
     timer.start()
     yield(timer, "timeout")
     elevator_music.stop()

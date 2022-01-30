@@ -41,7 +41,7 @@ func _on_SheetsButton_pressed():
     productivity_meter.value = productivity_meter.value + 3
 
 func _on_EmailWindow_email_replied():
-    productivity_meter.value = productivity_meter.value + 10
+    productivity_meter.value = productivity_meter.value + 8
 
 func _on_EmailWindow_emails_waiting(emails):
     if paused:
@@ -56,4 +56,4 @@ func resume_meters():
     paused = false
 
 func _on_HackingWindow_hack_complete():
-    war_meter.value = war_meter.value - 10
+    war_meter.value = war_meter.value - 8
