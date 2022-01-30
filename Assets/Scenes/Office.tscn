@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://CursorScript.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/ExitButton.png" type="Texture" id=2]
@@ -62,6 +62,7 @@
 [ext_resource path="res://Assets/Scenes/TimePanel.gd" type="Script" id=60]
 [ext_resource path="res://Assets/Scenes/Ports.gd" type="Script" id=61]
 [ext_resource path="res://Assets/Fonts/Kenney Space.ttf" type="DynamicFontData" id=62]
+[ext_resource path="res://Assets/Scenes/SQL.gd" type="Script" id=63]
 
 [sub_resource type="DynamicFont" id=37]
 size = 38
@@ -114,6 +115,9 @@ size = 24
 font_data = ExtResource( 44 )
 
 [sub_resource type="DynamicFont" id=31]
+font_data = ExtResource( 44 )
+
+[sub_resource type="DynamicFont" id=39]
 font_data = ExtResource( 44 )
 
 [sub_resource type="DynamicFont" id=35]
@@ -1204,6 +1208,120 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SQL" type="Control" parent="Windows/HackingWindow/Content/Hacks"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 63 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Windows/HackingWindow/Content/Hacks/SQL"]
+margin_left = 177.0
+margin_top = 253.0
+margin_right = 290.0
+margin_bottom = 275.0
+custom_fonts/normal_font = SubResource( 27 )
+bbcode_enabled = true
+bbcode_text = "[shake rate=5 level=15] INJECT    S Q L [/shake]"
+text = " INJECT    S Q L "
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/SQL"]
+margin_left = 10.0
+margin_top = 81.0
+margin_right = 446.0
+margin_bottom = 114.0
+custom_fonts/font = SubResource( 39 )
+text = "Robert'); Drop Tables Hackers;--"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateButton" type="TextureButton" parent="Windows/HackingWindow/Content/Hacks/SQL" groups=["buttons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = 42.0
+margin_right = 49.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTexture" type="NinePatchRect" parent="Windows/HackingWindow/Content/Hacks/SQL/CreateButton"]
+margin_right = 94.0
+margin_bottom = 22.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 16, 16 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/SQL/CreateButton/ButtonTexture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 3 )
+text = "CONSTRUCT"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InjectButton" type="TextureButton" parent="Windows/HackingWindow/Content/Hacks/SQL" groups=["buttons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -6.0
+margin_right = 49.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTexture" type="NinePatchRect" parent="Windows/HackingWindow/Content/Hacks/SQL/InjectButton"]
+margin_right = 94.0
+margin_bottom = 22.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 16, 16 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Windows/HackingWindow/Content/Hacks/SQL/InjectButton/ButtonTexture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 3 )
+text = "INJECT"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Corrupted" type="Control" parent="Windows/HackingWindow/Content/Hacks"]
 visible = false
 anchor_right = 1.0
@@ -1722,7 +1840,7 @@ script = ExtResource( 1 )
 
 [node name="CursorHand" type="Sprite" parent="Cursor"]
 visible = false
-position = Vector2( 2, 11.5 )
+position = Vector2( 0, 11.5 )
 texture = ExtResource( 4 )
 
 [node name="CursorArrow" type="Sprite" parent="Cursor"]
@@ -2133,6 +2251,8 @@ __meta__ = {
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter2" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter2" method="_on_Letter_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Hangman/Letter3" to="Windows/HackingWindow/Content/Hacks/Hangman/Letter3" method="_on_Letter_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Mainframe/OverloadButton" to="Windows/HackingWindow/Content/Hacks/Mainframe" method="_on_OverloadButton_pressed"]
+[connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/SQL/CreateButton" to="Windows/HackingWindow/Content/Hacks/SQL" method="_on_CreateButton_pressed"]
+[connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/SQL/InjectButton" to="Windows/HackingWindow/Content/Hacks/SQL" method="_on_InjectButton_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Corrupted/Files/File/TextureButton" to="Windows/HackingWindow/Content/Hacks/Corrupted/Files/File" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Corrupted/Files/File2/TextureButton" to="Windows/HackingWindow/Content/Hacks/Corrupted/Files/File2" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Windows/HackingWindow/Content/Hacks/Corrupted/Files/File3/TextureButton" to="Windows/HackingWindow/Content/Hacks/Corrupted/Files/File3" method="_on_TextureButton_pressed"]

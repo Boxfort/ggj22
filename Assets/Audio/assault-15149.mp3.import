@@ -12,4 +12,4 @@ dest_files=[ "res://.import/assault-15149.mp3-05232144bff7f977c57582b6bafea581.m
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=7.0

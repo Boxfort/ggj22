@@ -16,7 +16,7 @@ func _ready():
     war_meter.value = 0
 
 func enable_war():
-    war_meter.value = 0
+    war_meter.value = 5
     war_meter.get_parent().show()
     war_enabled = true
 

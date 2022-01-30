@@ -237,7 +237,7 @@ script = ExtResource( 1 )
 
 [node name="CursorHand" type="Sprite" parent="Cursor"]
 visible = false
-position = Vector2( 2, 11.5 )
+position = Vector2( 0, 11.5 )
 texture = ExtResource( 3 )
 
 [node name="CursorArrow" type="Sprite" parent="Cursor"]
